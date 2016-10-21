@@ -179,7 +179,12 @@ predictFromSentence <- function(sentence, toReturn=3) {
       firstPart <- paste(words[1:(length(words) - 1)], sep=" ", collapse=" ")
       lastWord <- words[length(words)]
       if(nchar(lastWord) > 0) {
-        predictNextWord(firstPart, start=lastWord, toReturn=toReturn)
+        res <- predictNextWord(firstPart, start=lastWord, toReturn=toReturn)
+        if(res[1] == toLower(lastWord)) {
+          predictNextWord(sentence, toReturn=toReturn)          
+        } else {
+          res
+        }
       } else {
         predictNextWord(sentence, toReturn=toReturn)
       }
