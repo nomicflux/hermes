@@ -181,7 +181,7 @@ predictFromSentence <- function(sentence, toReturn=3) {
       if(nchar(lastWord) > 0) {
         res <- predictNextWord(firstPart, start=lastWord, toReturn=toReturn)
         if(res[1] == toLower(lastWord)) {
-          predictNextWord(sentence, toReturn=toReturn)          
+          predictNextWord(paste(sentence, " "), toReturn=toReturn)          
         } else {
           res
         }
